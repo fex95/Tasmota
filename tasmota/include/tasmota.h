@@ -172,7 +172,7 @@ const uint16_t PWM_FREQ = 977;              // 100..4000 Hz led refresh
 const uint16_t PWM_MAX = 50000;             // [PWM_MAX] Maximum frequency for ESP32 - Default: 50000
 const uint16_t PWM_MIN = 2;                 // [PWM_MIN] Minimum frequency for ESP32 - Default: 2
 #else
-const uint16_t PWM_MAX = 4000;              // [PWM_MAX] Maximum frequency - Default: 4000
+const uint16_t PWM_MAX = 25000;              // [PWM_MAX] Maximum frequency - Default: 4000
 const uint16_t PWM_MIN = 40;                // [PWM_MIN] Minimum frequency - Default: 40
 #endif
                                             //    For Dimmers use double of your mains AC frequecy (100 for 50Hz and 120 for 60Hz)
