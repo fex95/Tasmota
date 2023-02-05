@@ -150,6 +150,8 @@ typedef struct {
   int32_t       energy_kWhtotal_ph[3];     // 2E4
   int32_t       energy_kWhexport_ph[3];    // 2F0
   uint32_t      utc_time;                  // 2FC
+  uint32_t      time_pulse_counter_reset[MAX_COUNTERS];
+  uint32_t      fan_rpm[MAX_COUNTERS];
 } TRtcSettings;
 TRtcSettings RtcSettings;
 #ifdef ESP32

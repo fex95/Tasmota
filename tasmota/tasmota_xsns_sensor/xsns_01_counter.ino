@@ -229,7 +229,16 @@ void CounterShow(bool json)
         dtostrfd((double)RtcSettings.pulse_counter[i] / 1000000, 6, counter);
       } else {
         dsxflg++;
-        snprintf_P(counter, sizeof(counter), PSTR("%lu"), RtcSettings.pulse_counter[i]);
+        
+        // Update fanspeed every 5 sec for 2 PPR Fans
+        uint32_t time = micros();
+        if(time - RtcSettings.time_pulse_counter_reset[i] > 5000000){
+          RtcSettings.fan_rpm[i] = RtcSettings.pulse_counter[i]*1000/((time - RtcSettings.time_pulse_counter_reset[i])/30000);
+          RtcSettings.time_pulse_counter_reset[i] = micros();
+          RtcSettings.pulse_counter[i] = 0;
+        }
+
+        snprintf_P(counter, sizeof(counter), PSTR("%lu"), RtcSettings.fan_rpm[i]);
       }
 
       if (json) {
@@ -249,8 +258,8 @@ void CounterShow(bool json)
         }
 #ifdef USE_WEBSERVER
       } else {
-        WSContentSend_PD(PSTR("{s}" D_COUNTER "%d{m}%s%s{e}"),
-          i +1, counter, (bitRead(Settings->pulse_counter_type, i)) ? " " D_UNIT_SECOND : "");
+        WSContentSend_PD(PSTR("{s}" "Fan speed " "%d{m}%s%s{e}"),
+          i +1, counter, (bitRead(Settings->pulse_counter_type, i)) ? " " D_UNIT_SECOND : " RPM");
 #endif  // USE_WEBSERVER
       }
     }
