@@ -1273,9 +1273,12 @@ void HandleRoot(void)
         } else {
 #endif  // USE_SHUTTER
           snprintf_P(stemp, sizeof(stemp), PSTR(" %d"), idx);
+          
+          /* Remove ON/OFF Button from WebUI
           WSContentSend_P(HTTP_DEVICE_CONTROL, 100 / cols, idx,
             (set_button) ? SettingsText(SET_BUTTON1 + idx -1) : (cols < 5) ? PSTR(D_BUTTON_TOGGLE) : "",
             (set_button) ? "" : (TasmotaGlobal.devices_present > 1) ? stemp : "");
+            */
 #ifdef USE_SHUTTER
         }
 #endif  // USE_SHUTTER
