@@ -1147,7 +1147,7 @@ void SettingsDefaultSet2(void) {
     Settings->light_color[i] = DEFAULT_LIGHT_COMPONENT;
 //    Settings->pwm_value[i] = 0;
   }
-  Settings->light_correction = 1;
+  Settings->light_correction = 0;
   Settings->light_dimmer = DEFAULT_LIGHT_DIMMER;
 //  Settings->light_fade = 0;
   Settings->light_speed = 1;

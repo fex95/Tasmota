@@ -167,7 +167,7 @@ const uint16_t WS2812_MAX_LEDS = 512;       // Max number of LEDs
 const uint32_t PWM_RANGE = 1023;            // 255..1023 needs to be devisible by 256
 //const uint16_t PWM_FREQ = 1000;             // 100..1000 Hz led refresh
 //const uint16_t PWM_FREQ = 910;              // 100..1000 Hz led refresh (iTead value)
-const uint16_t PWM_FREQ = 977;              // 100..4000 Hz led refresh
+const uint16_t PWM_FREQ = 25000;              // 100..4000 Hz led refresh
 #ifdef ESP32
 const uint16_t PWM_MAX = 50000;             // [PWM_MAX] Maximum frequency for ESP32 - Default: 50000
 const uint16_t PWM_MIN = 2;                 // [PWM_MIN] Minimum frequency for ESP32 - Default: 2
